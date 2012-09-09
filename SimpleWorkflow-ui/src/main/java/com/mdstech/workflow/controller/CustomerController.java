@@ -44,10 +44,20 @@ public class CustomerController {
 		if (bindingResult.hasErrors()) {
 			return jsonDataErrorFormData(bindingResult.getFieldErrors());
 		}
-		final CustomerDto customerDto = customerService.create(customer);
+		final CustomerDto customerDto = saveOrUpdate(customer);
 		final Map<String, Object> valueMap = new HashMap<String, Object>();
 		valueMap.put("success", true);
 		valueMap.put("customer", customerDto);
 		return valueMap;
+	}
+
+	private CustomerDto saveOrUpdate(final CustomerDto customerDto) {
+		CustomerDto customer = null;
+		if (customerDto.getIdProperty() != null) {
+			customer = customerService.update(customerDto);
+		} else {
+			customer = customerService.create(customerDto);
+		}
+		return customer;
 	}
 }
