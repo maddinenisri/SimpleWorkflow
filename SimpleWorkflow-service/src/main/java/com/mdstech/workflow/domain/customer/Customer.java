@@ -25,7 +25,7 @@ import com.mdstech.workflow.type.MaritalStatusType;
 import com.mdstech.workflow.type.SalutationType;
 
 @Entity
-@Table(name = "INS_CUSTOMER")
+@Table(name = "S_CUSTOMER")
 @AttributeOverrides({ @AttributeOverride(name = "id", column = @Column(name = "ID_CUSTOMER")) })
 public class Customer extends AbstractEntity<Long> implements Serializable {
 
